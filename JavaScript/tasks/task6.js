@@ -19,15 +19,15 @@ const Robot = class {
   }
 };
 
-const mixed = mixPrototype(Robot, {
+const MixedRobot = mixPrototype(Robot, {
   greet() {
     console.log(this.greeting);
   }
 });
 
-console.dir(mixed.prototype);
-console.dir(mixed.__proto__);
+console.dir(MixedRobot.prototype);
+console.dir(MixedRobot.__proto__);
 
-const robot = new Robot();
+const robot = new MixedRobot();
 console.dir(robot.__proto__);
 robot.greet();

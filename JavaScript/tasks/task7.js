@@ -6,11 +6,10 @@
  */
 
 const extend = (obj, mixin) => {
-  mixin.forEach(mix => Object.keys(mix).forEach(key => obj[key] = (
-    key !== 'override' ?
-      mix.override && mix[key] || obj[key] || mix[key] :
-      obj[key]
-  )));
+  mixin.forEach(mix => Object.keys(mix).forEach(key => {
+    if (key !== 'override')
+      obj[key] = mix.override && mix[key] || obj[key] || mix[key];
+  }));
   return obj;
 };
 
