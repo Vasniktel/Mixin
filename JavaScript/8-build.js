@@ -5,11 +5,9 @@
 
 const fs = require('fs');
 
-const parse = csv => {
-  const data = csv.split('\n');
-  if (!data[data.length - 1]) data.pop(); // empty string
-  return data.map(line => line.split(','));
-};
+const parse = (csv, delim = ',') => (
+  csv.split('\n').filter(el => !!el).map(line => line.split(delim))
+);
 
 const partWrap = (fn, ...args) => function(...pars) {
   return fn.call(this, ...args, ...pars);
